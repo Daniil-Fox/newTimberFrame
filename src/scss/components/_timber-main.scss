@@ -116,7 +116,7 @@
     }
 
     @include mobile {
-
+      height: calc(100vh - 200px);
       grid-template-columns: 1fr;
       align-items: flex-start;
       gap: 0;
@@ -200,7 +200,8 @@
     // background-color: var(--white-color);
     padding-right: 30px;
     position: absolute;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     top: 0;
     display: flex;
     flex-direction: column;
@@ -212,8 +213,7 @@
     }
 
     @include mobile {
-      padding: 64px 0;
-      margin: 0 16px;
+      padding: 64px 16px;
       height: auto;
     }
 
@@ -340,10 +340,11 @@
 
   .timber-item__text {
     padding-left: 60px;
-    margin-top: 94px;
+    margin-top: 30px;
 
     @include mobile {
-      padding-left: 0;
+      padding-left: 16px;
+      padding-right: 16px;
     }
 
     @media (min-width: 1441px) {
@@ -386,6 +387,10 @@
 .timber-ready {
   padding-top: 120px;
   padding-bottom: 120px;
+
+  @include mobile {
+    padding-top: 30px;
+  }
 
   @media (min-width: 1441px) {
     padding-top: 12rem;

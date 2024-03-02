@@ -467,7 +467,7 @@ if (itemsTexts.length > 0) {
   });
   changeSlide();
   let mm = gsap__WEBPACK_IMPORTED_MODULE_6__.gsap.matchMedia();
-  mm.add("(min-width: 769px)", () => {
+  mm.add("(min-width: 1024px)", () => {
     let t1 = gsap__WEBPACK_IMPORTED_MODULE_6__.gsap.timeline();
     t1.fromTo(".services-section__list", {
       y: () => -document.querySelector(".services-section__item").offsetHeight
@@ -483,8 +483,7 @@ if (itemsTexts.length > 0) {
       pin: ".services-section__container",
       invalidateOnRefresh: true
     });
-  });
-  if (window.matchMedia("(max-width: 768px)").matches) {
+  }).add("(max-width: 1023px)", () => {
     firstItem.classList.add("active");
     const items = document.querySelectorAll('.services-section__item');
     let scrollOffset = document.querySelector('.services-section__container').scrollHeight - items[8].scrollHeight - items[7].scrollHeight - items[6].scrollHeight - document.querySelector('.services-section__left').scrollHeight;
@@ -496,7 +495,21 @@ if (itemsTexts.length > 0) {
       pin: ".services-section__left",
       invalidateOnRefresh: true
     });
-  }
+  }).add("(max-width: 768px)", () => {
+    add("(max-width: 1023px)", () => {
+      firstItem.classList.add("active");
+      const items = document.querySelectorAll('.services-section__item');
+      let scrollOffset = document.querySelector('.services-section__container').scrollHeight - items[8].scrollHeight - items[7].scrollHeight - items[6].scrollHeight - document.querySelector('.services-section__left').scrollHeight;
+      gsap_all__WEBPACK_IMPORTED_MODULE_4__.ScrollTrigger.create({
+        trigger: ".services-section__container",
+        start: "top top+=80px",
+        end: "+=" + scrollOffset,
+        scrub: 0.1,
+        pin: ".services-section__left",
+        invalidateOnRefresh: true
+      });
+    });
+  });
 }
 
 // ScrollTrigger.refresh();
@@ -917,7 +930,7 @@ let func = (0,_functions_throttle__WEBPACK_IMPORTED_MODULE_10__.throttle)(setHea
 // }
 const projectCards = document.querySelectorAll(".projects-card");
 if (projectCards) {
-  if (window.matchMedia("(max-width: 768px)").matches) {
+  if (window.matchMedia("(max-width: 850px)").matches) {
     const observer = new IntersectionObserver((entries, options) => {
       entries.forEach(el => {
         if (el.isIntersecting) {
@@ -1768,28 +1781,34 @@ if (document.querySelector('.timber-main__content--main')) {
   });
   timelineText.to(texts[0], {
     y: "-1rem",
+    xPercent: '-50',
     opacity: 1,
     duration: 1
   });
   timelineText.to(texts[0], {
     y: "-3rem",
+    xPercent: '-50',
     opacity: 0
   });
   timelineText.to(texts[1], {
     y: "-1rem",
+    xPercent: '-50',
     opacity: 1,
     duration: 1
   });
   timelineText.to(texts[1], {
     y: "-3rem",
+    xPercent: '-50',
     opacity: 0
   });
   timelineText.to(texts[2], {
     y: "-1rem",
+    xPercent: '-50',
     opacity: 1,
     duration: 1
   });
   let startPos = 'top top+=70';
+  let endPos = 'bottom';
   if (window.matchMedia('(max-width: 768px)').matches) {
     startPos = 'top top+=70';
   }
@@ -1797,7 +1816,7 @@ if (document.querySelector('.timber-main__content--main')) {
     animation: timelineText,
     trigger: '.timber-main__content',
     start: startPos,
-    end: "bottom",
+    end: endPos,
     scrub: 1,
     ease: 'ease-out',
     invalidateOnRefresh: true
@@ -1821,7 +1840,7 @@ if (document.querySelector('.timber-main__content--main')) {
     animation: timelineImages,
     trigger: '.timber-main__content',
     start: startPos,
-    end: "bottom",
+    end: endPos,
     scrub: 1,
     ease: 'none',
     invalidateOnRefresh: true
@@ -1861,24 +1880,29 @@ if (document.querySelector('.timber-main__content--main')) {
   });
   timelineTextSec.to(textsSec[0], {
     y: "-1rem",
+    xPercent: '-50',
     opacity: 1,
     duration: 0.8
   });
   timelineTextSec.to(textsSec[0], {
     y: "-3rem",
+    xPercent: '-50',
     opacity: 0
   });
   timelineTextSec.to(textsSec[1], {
     y: "-1rem",
+    xPercent: '-50',
     opacity: 1,
     duration: 0.8
   });
   timelineTextSec.to(textsSec[1], {
     y: "-3rem",
+    xPercent: '-50',
     opacity: 0
   });
   timelineTextSec.to(textsSec[2], {
     y: "-1rem",
+    xPercent: '-50',
     opacity: 1,
     duration: 0.8
   });
@@ -1886,7 +1910,7 @@ if (document.querySelector('.timber-main__content--main')) {
     animation: timelineTextSec,
     trigger: '.timber-main__content--sec',
     start: startPos,
-    end: "bottom",
+    end: endPos,
     scrub: 1,
     ease: 'ease-out',
     invalidateOnRefresh: true,
@@ -1905,7 +1929,7 @@ if (document.querySelector('.timber-main__content--main')) {
     animation: timelineImagesSec,
     trigger: '.timber-main__content--sec',
     start: startPos,
-    end: "bottom",
+    end: endPos,
     scrub: 1,
     ease: 'none',
     invalidateOnRefresh: true,
